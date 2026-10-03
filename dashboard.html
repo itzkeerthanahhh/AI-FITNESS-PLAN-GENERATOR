@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FitBuddy - Dashboard</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <h1>FitBuddy Dashboard</h1>
+
+    <h2>Hello, {{ name }} 👋</h2>
+
+
+    <!-- Workout Plan -->
+    <div class="dashboard-card">
+        <h3>🏋️ Today's Workout</h3>
+
+        <ul>
+            <li>Warm-up – 5 minutes</li>
+            <li>Jumping Jacks – 20 reps</li>
+            <li>Squats – 15 reps</li>
+            <li>Push-ups – 10 reps</li>
+            <li>Plank – 30 seconds</li>
+            <li>Cool-down – 5 minutes</li>
+        </ul>
+    </div>
+
+
+    <!-- Nutrition Plan -->
+    <div class="dashboard-card">
+        <h3>🥗 Nutrition Plan</h3>
+
+        <ul>
+            <li>Breakfast – Oats and fruits</li>
+            <li>Lunch – Rice, vegetables and protein</li>
+            <li>Snack – Fruits or nuts</li>
+            <li>Dinner – Light meal with vegetables</li>
+        </ul>
+    </div>
+
+
+    <!-- Water Intake -->
+    <div class="dashboard-card">
+        <h3>💧 Water Intake Tracker</h3>
+
+        <p>Daily Goal: 8 glasses</p>
+
+        <p id="waterCount">0 / 8 glasses</p>
+
+        <button onclick="addWater()">
+            + Add Water
+        </button>
+    </div>
+
+
+    <!-- Fitness Progress -->
+    <div class="dashboard-card">
+        <h3>📊 Fitness Progress</h3>
+
+        <p>Weekly Goal: 5 Workouts</p>
+
+        <p id="completedWorkouts">Completed: 3 Workouts</p>
+
+        <p id="progress">Progress: 60%</p>
+
+        <button onclick="completeWorkout()">
+            ✓ Complete Workout
+        </button>
+    </div>
+
+
+    <!-- AI Fitness Plan -->
+    <div class="dashboard-card">
+        <h3>🤖 AI Fitness Plan</h3>
+
+        <p>Get a simple workout suggestion based on your fitness goal.</p>
+
+        <button onclick="generatePlan()">
+            Generate Fitness Plan
+        </button>
+    </div>
+
+
+    <!-- My Profile -->
+    <div class="dashboard-card">
+        <h3>👤 My Profile</h3>
+
+        <p>Name: {{ name }}</p>
+
+        <p>Fitness Goal: Stay Fit</p>
+
+        <p>Activity Level: Beginner</p>
+    </div>
+
+
+    <br>
+
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+
+
+    <script>
+
+        let waterCount = 0;
+
+        let completed = 3;
+
+
+        function addWater() {
+
+            if (waterCount < 8) {
+
+                waterCount++;
+
+                document.getElementById("waterCount").innerText =
+                    waterCount + " / 8 glasses";
+
+            } else {
+
+                alert("Daily water goal completed!");
+
+            }
+        }
+
+
+        function completeWorkout() {
+
+            if (completed < 5) {
+
+                completed++;
+
+                document.getElementById("completedWorkouts").innerText =
+                    "Completed: " + completed + " Workouts";
+
+                let percentage = (completed / 5) * 100;
+
+                document.getElementById("progress").innerText =
+                    "Progress: " + percentage + "%";
+
+            } else {
+
+                alert("Weekly workout goal completed!");
+
+            }
+        }
+
+
+        function generatePlan() {
+
+            alert(
+                "Today's AI Fitness Plan:\n\n" +
+                "🏃 20 minutes cardio\n" +
+                "🏋️ 15 squats\n" +
+                "💪 10 push-ups\n" +
+                "🧘 30 seconds plank"
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
